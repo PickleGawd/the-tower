@@ -62,6 +62,8 @@ public class PlayerScript : MonoBehaviour
 			StartCoroutine(Death());
 		else
 			Timer();
+		if (!GameObject.Find("PlayerCanvas").GetComponent<UI_Script>().topView)
+			m_camera.position = new Vector3(m_camera.position.x, transform.position.y - 1.5f, m_camera.position.z);
 	}
 
 	private void OnCollisionEnter(Collision col)
@@ -103,8 +105,6 @@ public class PlayerScript : MonoBehaviour
 		
 		currentLevel++;
 		currentHeight = holderLevels[currentLevel];
-
-		m_camera.position = new Vector3(m_camera.position.x, holderLevels[currentLevel].position.y - 10, m_camera.position.z);
 
 		cameraPos = m_camera.position;
 
